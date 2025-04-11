@@ -23,7 +23,7 @@ if (Cypress.env('DASHBOARDS_ASSISTANT_ENABLED')) {
       cy.visit(`${BASE_PATH}/app/home`);
 
       // Common text to wait for to confirm page loaded, give up to 60 seconds for initial load
-      cy.get(`input[placeholder="Ask question"]`, { timeout: 60000 }).should(
+      cy.get(`input[placeholder="Ask a question"]`, { timeout: 120000 }).should(
         'be.length',
         1
       );
@@ -36,6 +36,8 @@ if (Cypress.env('DASHBOARDS_ASSISTANT_ENABLED')) {
 
         // enable to toggle and show Chatbot
         cy.get(`img[aria-label="toggle chat flyout icon"]`).click();
+
+        cy.wait(5000);
 
         // click suggestions to generate response
         cy.contains('What are the indices in my cluster?').click();
@@ -50,10 +52,10 @@ if (Cypress.env('DASHBOARDS_ASSISTANT_ENABLED')) {
         cy.contains('suggestion1');
 
         // Click regenerate button
-        cy.get(`button[title="regenerate message"]`).click();
+        cy.get(`[aria-label="regenerate message"]`).click();
 
         // The previous message and the regenerate button should be gone
-        cy.get(`button[title="regenerate message"]`).should('be.length', 0);
+        cy.get(`[aria-label="regenerate message"]`).should('be.length', 0);
 
         // suggestions should be gone
         cy.get(`[aria-label="chat suggestions"]`).should('be.length', 0);

@@ -19,7 +19,7 @@ if (Cypress.env('DASHBOARDS_ASSISTANT_ENABLED')) {
       cy.visit(`${BASE_PATH}/app/home`);
 
       // Common text to wait for to confirm page loaded, give up to 60 seconds for initial load
-      cy.get(`input[placeholder="Ask question"]`, { timeout: 60000 }).should(
+      cy.get(`input[placeholder="Ask a question"]`, { timeout: 120000 }).should(
         'be.length',
         1
       );
@@ -36,7 +36,7 @@ if (Cypress.env('DASHBOARDS_ASSISTANT_ENABLED')) {
       it('display feedback button and able to interact', () => {
         // input question
         cy.wait(1000);
-        cy.get(`input[placeholder="Ask question"]`)
+        cy.get(`input[placeholder="Ask a question"]`)
           .click()
           .type('What are the indices in my cluster?{enter}');
 

@@ -18,7 +18,7 @@ if (Cypress.env('DASHBOARDS_ASSISTANT_ENABLED')) {
       cy.visit(`${BASE_PATH}/app/home`);
 
       // Common text to wait for to confirm page loaded, give up to 60 seconds for initial load
-      cy.get(`input[placeholder="Ask question"]`, { timeout: 120000 }).should(
+      cy.get(`input[placeholder="Ask a question"]`, { timeout: 120000 }).should(
         'be.length',
         1
       );
